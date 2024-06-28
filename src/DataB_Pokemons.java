@@ -77,6 +77,43 @@ public class DataB_Pokemons {
         }
     }
     
+    public void consultaUnPokemon(String dataBase, String table, String nombre){
+        Connection conexion = conexion(dataBase);
+        String sql = "DELETE FROM "+table+"WHERE NAME = ?";
+        String type, id;
+        double health, defense, velocity, atack;
+        Statement sentencia;
+        ResultSet resultados;
+        try{
+            sentencia = conexion().createStatement();
+            resultados = sentencia.executeQuery("select * from prueba WHERE Name: " + nombre);
+            
+            id = resultados.getString("IdPokemon");
+            nombre = resultados.getString("Name");
+            type = resultados.getString("Type");
+            health = resultados.getDouble("Health");
+            defense = resultados.getDouble("Defense");
+            velocity = resultados.getDouble("Velocity");
+            atack = resultados.getDouble("Atack");
+            
+            System.out.println("ID= "+id+"\t\t\t"+"nombre= "+nombre+"\t\t\t"+"type= "+type+"\t\t\t"+"health= "+health+"\t\t\t"+"defense= "+defense+
+            "\t\t\t"+"velocity: "+velocity+"\t\t\t"+"atack= "+atack);
+            
+            
+        }catch(SQLException e){
+            System.out.println("Error al consultar datos "+e.getMessage());
+        }
+        
+         try{
+            sentencia = conexion().createStatement();
+            resultados = sentencia.executeQuery("select * from prueba WHERE NAME = " +nombre);
+            
+         }catch(SQLException e){ 
+         System.out.println("Error al mostrar datos: "+e.getMessage());
+         }
+        
+    }
+    
     public void borrar(String dataBase, String table, String nombre, boolean consulta){
         Connection conexion = conexion(dataBase);
         String sql = "DELETE FROM "+table+"WHERE NAME = ?";
