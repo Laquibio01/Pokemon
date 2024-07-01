@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 public class Commands_DataB extends Atributos_Pokemon{
     
+  
+    
     public Commands_DataB(String pokeName, String pokeType, double health, double defense, double velocity, double atack){
         // In this constructor we get all variables from Atributos_Pokemon
         super(pokeName, pokeType, health, defense, velocity, atack);
