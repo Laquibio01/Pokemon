@@ -49,13 +49,18 @@ public class DataB_Pokemons {
         }
     }
     
-    public void insertar(String namePokemon, String typePokemon, double healthPokemon, double defensePokemon, double velocityPokemon, double atackPokemon){
+    public void insertar(int Identifier, String namePokemon, String typePokemon, double healthPokemon, double defensePokemon, double velocityPokemon, double atackPokemon){
         Connection conexion = conexion();
-        String sqlinsertar= "INSERT INTO POKEMONES(Name, Type, Health, Defense, Velocity, Atack) VALUES(?,?,?,?,?,?)";
+        String sqlinsertar= "INSERT INTO POKEMONES(IdPokemon, Name, Type, Health, Defense, Velocity, Atack) VALUES(?,?,?,?,?,?,?)";
         
         try(PreparedStatement pstmt = conexion.prepareStatement(sqlinsertar)){
-      
+         
+            Identifier = pstmt.getMaxRows();
             
+            Identifier= Identifier + 1;
+            
+            
+            pstmt.setInt(1, Identifier);
             pstmt.setString(2, namePokemon);
             pstmt.setString(3, typePokemon);
             pstmt.setDouble(4, healthPokemon);

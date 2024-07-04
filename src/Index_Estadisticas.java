@@ -13,6 +13,7 @@ public class Index_Estadisticas {
         
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to your Pokedex");
+        datap.conexion();
         do{
             System.out.println("Choose the modification you want to make to the pokedex");
             /*System.out.println("1.-Eliminate a pokemon");*/
@@ -28,6 +29,8 @@ public class Index_Estadisticas {
             seleccion=sc.nextInt();
              switch (seleccion) {
                  case 1:
+                     String idString = "1";
+                     datap.conexion();
                      System.out.println("Enter the name of the new pokemon");
                      System.out.print("- ");
                      pokeName=sc.nextLine();
@@ -48,7 +51,7 @@ public class Index_Estadisticas {
                      System.out.print("- ");
                      atack=sc.nextDouble();
                      
-                     datap.insertar(pokeName, pokeType, health, defense, velocity, atack);
+                     datap.insertar(1, pokeName, pokeType, health, defense, velocity, atack);
                      
                      System.out.println(" ");
                      break;
