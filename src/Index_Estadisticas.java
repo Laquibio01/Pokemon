@@ -59,6 +59,7 @@ public class Index_Estadisticas {
                      break;
                  case 3:
                      System.out.println(" ");
+                     datap.numberPokemon();
                      break;
                  case 4:
                      System.out.println("Enter the name of the pokemon");

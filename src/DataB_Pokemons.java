@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,7 +132,7 @@ public class DataB_Pokemons {
             }
             
         }catch(SQLException e){
-            System.out.println("Error al consultar datos "+e.getMessage());
+            System.out.println("Error al consultar datos: "+e.getMessage());
         }
         
         
@@ -153,6 +154,16 @@ public class DataB_Pokemons {
         }
         if(consulta){
             consulta();
+        }
+    }
+    
+    public void numberPokemon(){
+        Connection conexion = conexion();
+        try{
+            DatabaseMetaData MaxRows = conexion.getMetaData();
+            System.out.println(MaxRows);
+        }catch(SQLException e){
+            System.out.println("Error al encontrar el numero de pokemons: "+e.getMessage());
         }
     }
     
