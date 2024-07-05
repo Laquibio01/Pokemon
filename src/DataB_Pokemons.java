@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 public class DataB_Pokemons {
     
-    
-    public Connection conexion(){
+   /*  public Connection conexion(){                  // Conexion para MYSQL
         String url = "jdbc:mysql://localhost:3306/juegopokemon";
         String user = "root";
         String pass = "";
@@ -21,6 +20,24 @@ public class DataB_Pokemons {
         }
         return conexion;
     }
+    */
+    public Connection conexion(){       //Clase para conexion de SQLServer
+    String url = "jdbc:sqlserver://localhost:1433;databaseName=JuegoPokemon;encrypt=true;trustServerCertificate=true;";
+    String user = "sa";
+    String pass = "1234"; //Necesario cambiar la contraseña de tu usario personal
+    Connection conexion = null;
+
+    try {
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); // Cargar el driver
+        conexion = DriverManager.getConnection(url, user, pass);
+        System.out.println("Conexion exitosa a la base de datos de SQL Server");
+    } catch (ClassNotFoundException ex) {
+        System.out.println("Error: no se encontró el driver JDBC de SQL Server");
+    } catch(SQLException ex){
+        System.out.println("Error al conectar a la base de datos: "+ex.getMessage());
+    }
+    return conexion;
+}
     
     public void consulta(){
         Statement sentencia;
@@ -28,19 +45,19 @@ public class DataB_Pokemons {
         
         try{
             sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba");
+            resultados = sentencia.executeQuery("select * from TPokemones");
             while(resultados.next()){
                 
                 String id = resultados.getString("IdPokemon");
                 String nombre = resultados.getString("Name");
                 String type = resultados.getString("Type");
-                double health = resultados.getDouble("Health");
-                double defense = resultados.getDouble("Defense");
-                double velocity = resultados.getDouble("Velocity");
-                double atack = resultados.getDouble("Atack");
+                float health = resultados.getFloat("Health");
+                float defense = resultados.getFloat("Defense");
+                float velocity = resultados.getFloat("Velocity");
+                float atack = resultados.getFloat("Atack");
                 
-                System.out.println("ID= "+id+"\t\t\t"+"nombre= "+nombre+"\t\t\t"+"type= "+type+"\t\t\t"+"health= "+health+"\t\t\t"+"defense= "+defense+
-                "\t\t\t"+"velocity: "+velocity+"\t\t\t"+"atack= "+atack);
+                System.out.println("ID= "+id+"\t"+"Nombre= "+nombre+"\t"+"Type= "+type+"\t"+"Health= "+health+"\t"+"Defense= "+defense+
+                "\t"+"Velocity: "+velocity+"\tt"+"Atack= "+atack);
             }
             sentencia.close();
             resultados.close();
@@ -49,24 +66,27 @@ public class DataB_Pokemons {
         }
     }
     
-    public void insertar(int Identifier, String namePokemon, String typePokemon, double healthPokemon, double defensePokemon, double velocityPokemon, double atackPokemon){
+    public void insertar( String namePokemon, String typePokemon, float healthPokemon, float defensePokemon, float velocityPokemon, float atackPokemon){
         Connection conexion = conexion();
-        String sqlinsertar= "INSERT INTO POKEMONES(IdPokemon, Name, Type, Health, Defense, Velocity, Atack) VALUES(?,?,?,?,?,?,?)";
+        String sqlinsertar= "INSERT INTO TPOKEMONES(Name, Type, Health, Defense, Velocity, Atack) VALUES(?,?,?,?,?,?)";
         
         try(PreparedStatement pstmt = conexion.prepareStatement(sqlinsertar)){
          
-            Identifier = pstmt.getMaxRows();
+            /*
+            int IdMax = pstmt.getMaxRows();
             
-            Identifier= Identifier + 1;
-            
+            if(Identifier == IdMax){
+                Identifier = Identifier+1;
+            }
             
             pstmt.setInt(1, Identifier);
-            pstmt.setString(2, namePokemon);
-            pstmt.setString(3, typePokemon);
-            pstmt.setDouble(4, healthPokemon);
-            pstmt.setDouble(5, defensePokemon);
-            pstmt.setDouble(6, velocityPokemon);
-            pstmt.setDouble(7, atackPokemon);
+            */
+            pstmt.setString(1, namePokemon);
+            pstmt.setString(2, typePokemon);
+            pstmt.setFloat(3, healthPokemon);
+            pstmt.setFloat(4, defensePokemon);
+            pstmt.setFloat(5, velocityPokemon);
+            pstmt.setFloat(6, atackPokemon);
                     
                     
             pstmt.executeUpdate();
@@ -83,48 +103,45 @@ public class DataB_Pokemons {
     }
     
     public void consultaUnPokemon(String dataBase, String table, String nombre){
-        Connection conexion = conexion(dataBase);
-        String sql = "DELETE FROM "+table+"WHERE NAME = ?";
-        String type, id;
-        double health, defense, velocity, atack;
+  
+        Connection conexion = conexion();
+        String sql = "SELECT * FROM TPokemones WHERE Name = '"+nombre+" ' ";
+        String type;
+        int id;
+        float health, defense, velocity, atack;
         Statement sentencia;
         ResultSet resultados;
+        
+        
         try{
-            sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE Name: " + nombre);
+            System.out.println(sql);
+            sentencia = conexion.createStatement();
+            resultados = sentencia.executeQuery(sql);
+            while(resultados.next()){
+                    id = resultados.getInt(1);
+                    nombre = resultados.getString(2);
+                    type = resultados.getString(3);
+                    health = resultados.getFloat(4);
+                    defense = resultados.getFloat(5);
+                    velocity = resultados.getFloat(6);
+                    atack = resultados.getFloat(7);
             
-            id = resultados.getString("IdPokemon");
-            nombre = resultados.getString("Name");
-            type = resultados.getString("Type");
-            health = resultados.getDouble("Health");
-            defense = resultados.getDouble("Defense");
-            velocity = resultados.getDouble("Velocity");
-            atack = resultados.getDouble("Atack");
-            
-            System.out.println("ID= "+id+"\t\t\t"+"nombre= "+nombre+"\t\t\t"+"type= "+type+"\t\t\t"+"health= "+health+"\t\t\t"+"defense= "+defense+
-            "\t\t\t"+"velocity: "+velocity+"\t\t\t"+"atack= "+atack);
-            
+                System.out.println("ID= "+id+"\t"+"Nombre= "+nombre+"\t\t"+"Type= "+type+"\t\t"+"Health= "+health+"\t"+"Defense= "+defense+
+                "\t"+"Velocity: "+velocity+"\tt"+"Atack= "+atack);
+            }
             
         }catch(SQLException e){
             System.out.println("Error al consultar datos "+e.getMessage());
         }
         
-         try{
-            sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE NAME = " +nombre);
-            
-         }catch(SQLException e){ 
-         System.out.println("Error al mostrar datos: "+e.getMessage());
-         }
         
     }
     
     public void borrar(String dataBase, String table, String nombre, boolean consulta){
-        Connection conexion = conexion(dataBase);
-        String sql = "DELETE FROM "+table+"WHERE NAME = ?";
+        Connection conexion = conexion();
+        String sql = "DELETE FROM "+table+" WHERE Name =  '"+nombre+" ' ";
         
         try(PreparedStatement pstmt= conexion.prepareStatement(sql)){
-            pstmt.setString(2, nombre);
             int filasAfectadas = pstmt.executeUpdate();
             if(filasAfectadas>0){
                 System.out.println("Fila borrada correctamente.");

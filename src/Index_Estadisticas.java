@@ -8,20 +8,20 @@ public class Index_Estadisticas {
     public static void main(String[] args) {
          int seleccion;
          String pokeName, pokeType = null;
-         double health, defense, velocity, atack;
+         float health, defense, velocity, atack;
          DataB_Pokemons datap = new DataB_Pokemons();
         
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to your Pokedex");
-        datap.conexion();
         do{
             System.out.println("Choose the modification you want to make to the pokedex");
             /*System.out.println("1.-Eliminate a pokemon");*/
-            System.out.println("1.-Add a pokemon");
-            System.out.println("2.-Show a pokemons");
+            System.out.println("1.-Add a Pokemon");
+            System.out.println("2.-Show Pokemons");
             System.out.println("3.- See number of Pokemons");
             System.out.println("4.- Find a pokemon");
-            System.out.println("5.- Exit");
+            System.out.println("5.- Delete a Pokemon");
+            System.out.println("6.- Exit");
             System.out.println(" ");
             System.out.println("Your opcion: ");
             System.out.print("- ");
@@ -29,8 +29,6 @@ public class Index_Estadisticas {
             seleccion=sc.nextInt();
              switch (seleccion) {
                  case 1:
-                     String idString = "1";
-                     datap.conexion();
                      System.out.println("Enter the name of the new pokemon");
                      System.out.print("- ");
                      pokeName=sc.nextLine();
@@ -43,15 +41,15 @@ public class Index_Estadisticas {
                      health=sc.nextInt();
                      System.out.println("Enter the defense of the new pokemon");
                      System.out.print("- ");
-                     defense=sc.nextDouble();
+                     defense=sc.nextFloat();
                      System.out.println("Enter the velocity of the new pokemon");
                      System.out.print("- ");
-                     velocity=sc.nextDouble();
+                     velocity=sc.nextFloat();
                      System.out.println("Enter the atack of the new pokemon");
                      System.out.print("- ");
-                     atack=sc.nextDouble();
+                     atack=sc.nextFloat();
                      
-                     datap.insertar(1, pokeName, pokeType, health, defense, velocity, atack);
+                     datap.insertar(pokeName, pokeType, health, defense, velocity, atack);
                      
                      System.out.println(" ");
                      break;
@@ -66,9 +64,15 @@ public class Index_Estadisticas {
                      System.out.println("Enter the name of the pokemon");
                      pokeName = sc.nextLine();
                      pokeName = sc.nextLine();
-                     datap.consultaUnPokemon("juegopokemon", "pokemones", pokeName);
+                     datap.consultaUnPokemon("JuegoPokemon", "TPokemones", pokeName);
                      break;
                  case 5:
+                     System.out.println("Enter the name of the pokemon");
+                     pokeName = sc.nextLine();
+                     pokeName = sc.nextLine();
+                     datap.borrar("JuegoPokemon","TPokemones", pokeName, true);
+                     break;
+                 case 6:
                      System.out.println("We are closing the System ...");
                      System.out.println("System closed.");
                      break;
@@ -77,6 +81,6 @@ public class Index_Estadisticas {
                      System.out.println(" ");
                      break;
              }
-        }while(seleccion!=5);
+        }while(seleccion!=6);
     }
 }
