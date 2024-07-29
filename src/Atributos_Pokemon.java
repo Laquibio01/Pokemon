@@ -2,7 +2,9 @@ public class Atributos_Pokemon {
     
     private String pokeName, pokeType; //In these Strings will add poke's name and poke's type
     private double health, defense, velocity, atack; //In these Doubles will add health, defense, velocity and atack
-    
+
+    public Atributos_Pokemon() {
+    }        
     
     public Atributos_Pokemon(String pokeName, String pokeType, double health, double defense, double velocity, double atack){
         //This constructor was made to add parameters for the pokemons that will be add using a this

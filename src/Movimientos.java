@@ -1,17 +1,21 @@
 public class Movimientos {
     int daño, usos;
-    String tipoMovimiento;//Un boton debera enviar un parametro string el cual se utilizara
-    String tipoAtaque;//Supongamos que proviene de la clase de ataque que indica el tipo de ataque
+    String tipoMovimiento;//Un boton debera enviar un parametro string el cual se utilizara    
+    String tipoPokemon;
+    
+    Atributos_Pokemon atributosPoke = new Atributos_Pokemon();
 
-    public Movimientos(int daño, String tipoMovimiento, String tipoAtaque) {
+    public Movimientos(int daño, String tipoMovimiento) {
         this.daño = daño;
-        this.tipoMovimiento = tipoMovimiento;
-        this.tipoAtaque = tipoAtaque;
+        this.tipoMovimiento = tipoMovimiento;        
     }
     
+    
     //Comprueba la cantidad de usos disponibles y si cuenta con ellos llama al metodo
-    public int comprobador()
+    public String comprobador()
     {
+        tipoPokemon = atributosPoke.getPokeType();
+        
         if(tipoMovimiento == "Fuerte" && usos <=10);
         {
             movimientoFuerte();
@@ -20,13 +24,13 @@ public class Movimientos {
         {
             movimientoLigero();
         }
-        return daño;
+        return tipoPokemon;
     }
     
     //Metodo que le asigna a la variable daño
     public int movimientoFuerte()
     {
-        switch(tipoAtaque)
+        switch(tipoPokemon)
         {
             case "Agua" ->{daño = 15;}
             case "Fuego" ->{daño = 20;}
@@ -40,7 +44,7 @@ public class Movimientos {
     
     public void movimientoLigero()
     {
-        switch(tipoAtaque)
+        switch(tipoPokemon)
         {
             case "Agua" ->{daño = 19;}
             case "Fuego" ->{daño = 28;}
@@ -48,7 +52,5 @@ public class Movimientos {
             case "Vientoalv" ->{daño = 25;}            
         }
         usos++;
-    }
-    
-    
+    }       
 }

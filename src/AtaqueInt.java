@@ -16,6 +16,7 @@ public class AtaqueInt extends javax.swing.JFrame {
     /**
      * Creates new form PruebaVen
      */
+    
     public AtaqueInt() {
         imagenFondo();
         initComponents();
@@ -23,7 +24,7 @@ public class AtaqueInt extends javax.swing.JFrame {
     public void imagenFondo(){
         String imagen = "\\background-pokemon.jpg";
         String imagenDos = "\\Pokemon-Background_1.jpeg";
-         imagenfondo image=new imagenfondo();
+         imagenfondo image =new imagenfondo();
          image.setImage(imagen);
          setContentPane(image);
     }
