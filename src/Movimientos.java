@@ -16,11 +16,11 @@ public class Movimientos {
     {
         tipoPokemon = atributosPoke.getPokeType();
         
-        if(tipoMovimiento == "Fuerte" && usos <=10);
+        if("Fuerte".equals(tipoMovimiento) && usos <=10);
         {
             movimientoFuerte();
         }
-        if(tipoMovimiento == "Ligero" && usos <=20);
+        if("Ligero".equals(tipoMovimiento) && usos <=20);
         {
             movimientoLigero();
         }
