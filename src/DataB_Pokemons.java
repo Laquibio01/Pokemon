@@ -77,24 +77,27 @@ public class DataB_Pokemons {
         }
     }
     
-    public void consultaUnPokemon(String dataBase, String table, String nombre){
+    public void consultaUnPokemon(String dataBase, String table, String id){
         Connection conexion = conexion(dataBase);
         String sql = "DELETE FROM "+table+"WHERE NAME = ?";
-        String type, id;
-        double health, defense, velocity, atack;
+        String type, nombre;
+        String health, defense, velocity, atack;
         Statement sentencia;
         ResultSet resultados;
         try{
             sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE Name: " + nombre);
+            resultados = sentencia.executeQuery("select * from prueba WHERE Id: " + id);
             
             id = resultados.getString("IdPokemon");
             nombre = resultados.getString("Name");
             type = resultados.getString("Type");
             health = resultados.getDouble("Health");
-            defense = resultados.getDouble("Defense");
-            velocity = resultados.getDouble("Velocity");
-            atack = resultados.getDouble("Atack");
+            defense = resultados.get("Defense");
+            velocity = resultados.getString("Velocity");
+            atack = resultados.getString("Atack");
+            
+            return nombre;
+            
             
             System.out.println("ID= "+id+"\t\t\t"+"nombre= "+nombre+"\t\t\t"+"type= "+type+"\t\t\t"+"health= "+health+"\t\t\t"+"defense= "+defense+
             "\t\t\t"+"velocity: "+velocity+"\t\t\t"+"atack= "+atack);
