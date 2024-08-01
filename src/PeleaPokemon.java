@@ -12,7 +12,11 @@ public class PeleaPokemon extends javax.swing.JFrame {
     /**
      * Creates new form PeleaPokemon
      */
-    int hp1=100, hp2=100;
+    int hp1, hp2;
+    public void establecerVida(int vidaUno, int vidaDos){
+        this.hp1 = vidaUno;
+        this.hp2 = vidaDos;
+    }
     public PeleaPokemon() {
         initComponents();
         BarraEnemigo.setValue(hp1);

@@ -12,12 +12,18 @@ import java.awt.event.ActionListener;
  *
  * @author aaron
  */
-public class AtaqueInt extends javax.swing.JFrame {
+public class AtaqueInt extends javax.swing.JFrame  {
 
-    int Hp1 = 100, Hp2 = 100,
+    
+    int Hp1, Hp2,
             nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
             contRever1 = 0, contRever2 = 0, contRever3 = 0, contRever4 = 0,
             Damage = 10;
+    
+    public void establecerVida(int vidaUno, int vidaDos){
+        this.Hp1 = vidaUno;
+        this.Hp2 = vidaDos;
+    }
 
     public void afectar(String aff, int valor) {
 //        this.BarraYo.setValue(valor);

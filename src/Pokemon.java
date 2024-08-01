@@ -8,7 +8,7 @@ class Pokemon {
     int defensa;
     int velocidad;
 
-    public Pokemon(String nombre, 
+    public Pokemon(String nombre,
                    int vida, int ataque,  
                    int defensa, int velocidad) {
         this.nombre = nombre;

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 
 public class Index_Estadisticas {
-
+/*
     public static void main(String[] args) {
          int seleccion;
          String pokeName, pokeType = null;
@@ -76,4 +76,5 @@ public class Index_Estadisticas {
              }
         }while(seleccion!=5);
     }
+
 }

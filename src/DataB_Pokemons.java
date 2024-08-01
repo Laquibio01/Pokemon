@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 public class DataB_Pokemons {
-    
+    public String type = "", nombre = "";
+    public int health, defense, velocity, atack;
     
     public Connection conexion(){
         String url = "jdbc:mysql://localhost:3306/juegopokemon";
@@ -77,30 +78,24 @@ public class DataB_Pokemons {
         }
     }
     
-    public void consultaUnPokemon(String dataBase, String table, String id){
+    public void consultaUnPokemon(String dataBase, String table, int id){
         Connection conexion = conexion(dataBase);
         String sql = "DELETE FROM "+table+"WHERE NAME = ?";
         String type, nombre;
-        String health, defense, velocity, atack;
+        int health, defense, velocity, atack;
         Statement sentencia;
         ResultSet resultados;
         try{
             sentencia = conexion().createStatement();
             resultados = sentencia.executeQuery("select * from prueba WHERE Id: " + id);
             
-            id = resultados.getString("IdPokemon");
-            nombre = resultados.getString("Name");
-            type = resultados.getString("Type");
-            health = resultados.getDouble("Health");
-            defense = resultados.get("Defense");
-            velocity = resultados.getString("Velocity");
-            atack = resultados.getString("Atack");
-            
-            return nombre;
-            
-            
-            System.out.println("ID= "+id+"\t\t\t"+"nombre= "+nombre+"\t\t\t"+"type= "+type+"\t\t\t"+"health= "+health+"\t\t\t"+"defense= "+defense+
-            "\t\t\t"+"velocity: "+velocity+"\t\t\t"+"atack= "+atack);
+            id = resultados.getInt("IdPokemon");
+            this.nombre = resultados.getString("Name");
+            this.type = resultados.getString("Type");
+            this.health = resultados.getInt("Health");
+            this.defense = resultados.getInt("Defense");
+            this.velocity = resultados.getInt("Velocity");
+            this.atack = resultados.getInt("Atack");
             
             
         }catch(SQLException e){
@@ -109,7 +104,7 @@ public class DataB_Pokemons {
         
          try{
             sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE NAME = " +nombre);
+            resultados = sentencia.executeQuery("select * from prueba WHERE NAME = " +id);
             
          }catch(SQLException e){ 
          System.out.println("Error al mostrar datos: "+e.getMessage());
