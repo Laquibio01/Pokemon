@@ -37,13 +37,13 @@ public class PokejuegoLocal {
                 }
             }
         }
-        String ganador;
+        String ganador = "";
 
         // Se determina el ganador al final del combate
-        if (pokemon1.getVida() > 0) {
-            ganador = pokemon1.getNombre();
-        } else {
+        if (pokemon1.getVida() <= 0) {
             ganador = pokemon2.getNombre();
+        } else if (pokemon2.getVida() <= 0){
+            ganador = pokemon1.getNombre();
         }
         System.out.println(ganador + " es el ganador");
     }
