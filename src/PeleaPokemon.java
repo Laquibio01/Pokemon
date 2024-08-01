@@ -253,6 +253,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
    /* public void afectar(String aff, int valor){
@@ -291,7 +292,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
 
     private void PelearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PelearActionPerformed
         // TODO add your handling code here:
-        Prueba p = new Prueba();
+        AtaqueInt p = new AtaqueInt();
         p.setVisible(true);
         dispose();
 

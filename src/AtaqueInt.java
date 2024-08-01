@@ -120,6 +120,11 @@ public class AtaqueInt extends javax.swing.JFrame {
         DamageLabel.setText("50");
 
         ReturnButton.setText("Return");
+        ReturnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReturnButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -327,6 +332,7 @@ public class AtaqueInt extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Attack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack1ActionPerformed
@@ -376,6 +382,12 @@ public class AtaqueInt extends javax.swing.JFrame {
         PPLabel.setText((nAttack4 - contRever4) + "/" + nAttack4);
         finCombate();
     }//GEN-LAST:event_Attack4ActionPerformed
+
+    private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
+        PeleaPokemon p = new PeleaPokemon();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ReturnButtonActionPerformed
 
     /**
      * @param args the command line arguments
