@@ -15,8 +15,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
     int hp1=100, hp2=100;
     public PeleaPokemon() {
         initComponents();
-        jProgressBar2.setValue(hp1);
-        jProgressBar3.setValue(hp2);
+        BarraEnemigo.setValue(hp1);
+        BarraEnemigo1.setValue(hp2);
     }
 
     /**
