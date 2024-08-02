@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
  */
 public class AtaqueInt extends javax.swing.JFrame  {
 
+    PokejuegoLocal pokejuego = new PokejuegoLocal();
+    PeleaPokemon intMain = new PeleaPokemon();
     
     int Hp1, Hp2,
             nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
@@ -29,14 +31,14 @@ public class AtaqueInt extends javax.swing.JFrame  {
 //        this.BarraYo.setValue(valor);
 //        System.out.println(valor);
         if (aff.equals("suma")) {
-            if (101 > (Hp2 + valor)) {
-                this.Hp2 = this.Hp2 + valor;
+            if (101 > (Hp1 + valor)) {
+                this.Hp1 = this.Hp1 + valor;
             } else {
-                this.Hp2 = 100;
+                this.Hp1 = 100;
             }
         } else {
             if (Hp2 > valor) {
-                this.Hp2 = this.Hp2 - valor;
+                this.Hp2 = this.Hp1 - valor;
             } else {
                 this.Hp2 = 0;
             }
@@ -342,7 +344,8 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Attack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack1ActionPerformed
-        afectar("resta", 10);
+       intMain.afectar("resta", 10);
+       
 
         DamageLabel.setText("" + (Damage = 10));
         AttackLabel.setText("Mover el bote");
@@ -354,7 +357,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack1ActionPerformed
 
     private void Attack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack2ActionPerformed
-        afectar("resta", 50);
+        intMain.afectar("resta", 50);
 
         DamageLabel.setText("" + (Damage=50));
         AttackLabel.setText("Mover el cheto");
@@ -366,7 +369,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack2ActionPerformed
 
     private void Attack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack3ActionPerformed
-        afectar("resta", 20);
+        intMain.afectar("resta", 20);
 
         DamageLabel.setText("" + (Damage = 20));
         AttackLabel.setText("Morder el egg");
@@ -378,7 +381,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack3ActionPerformed
 
     private void Attack4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack4ActionPerformed
-        afectar("resta", 30);
+        intMain.afectar("resta", 30);
 
         DamageLabel.setText("" + (Damage = 30));
         AttackLabel.setText("Mascar la iguana");

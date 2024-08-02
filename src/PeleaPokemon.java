@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,19 +12,163 @@
  */
 public class PeleaPokemon extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PeleaPokemon
-     */
-    int hp1, hp2;
+    
+    AtaqueInt ataques = new AtaqueInt();
+    AtaqueInt segundaInt = new AtaqueInt();
+    PokejuegoLocal Pokejuego = new PokejuegoLocal();
+    
+    int Hp1, Hp2, nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
+            contRever1 = 0, contRever2 = 0, contRever3 = 0, contRever4 = 0,
+            Damage = 10, velocidad = Pokejuego.velocidad, velocidad2 = Pokejuego.velocidad2;
+    
+    String iniciador, eleccionEnemigo;
+            
+    boolean primerTurno = true;
     public void establecerVida(int vidaUno, int vidaDos){
-        this.hp1 = vidaUno;
-        this.hp2 = vidaDos;
+        this.Hp1 = vidaUno;
+        this.Hp2 = vidaDos;
+        segundaInt.establecerVida(vidaUno, vidaDos);
     }
+    
+    public void pelea(){ 
+        if(primerTurno){
+            inicioTurno();
+            primerTurno =  false;
+        }
+        if(iniciador.equals("Enemigo")){
+            Pelear.setEnabled(false);
+            inventario.setEnabled(false);
+            pokemon.setEnabled(false);
+            huir.setEnabled(false);
+            eleccionEnemigo();
+        }
+        if(iniciador.equals("Jugador")){
+            Pelear.setEnabled(true);
+            inventario.setEnabled(true);
+            pokemon.setEnabled(true);
+            huir.setEnabled(true);
+        }
+    }
+    
+    public void eleccionEnemigo(){
+        int eleccion, vida= 0;
+        if(Hp2 < 20){
+            eleccionEnemigo = "suma";
+            
+        }else{
+            eleccionEnemigo = "restar";
+            eleccion = (int) (Math.random() * 4);
+            switch(eleccion){
+                case 0:
+                    vida = 10;
+                    break;
+                case 1:
+                    vida = 50;
+                    break;
+                case 2:
+                    vida = 20;
+                    break;
+                case 3:
+                    vida = 30;
+                    break;
+                case 4:
+                    vida = 10;
+                    eleccionEnemigo = "suma";
+                    break;
+            }
+            
+        }
+        iniciador = "Jugador";
+        afectarDeEnemigo(eleccionEnemigo, vida);
+    }
+    
+    public void afectarDeEnemigo(String aff, int valor){
+        if (aff.equals("suma")) {
+            if (101 > (Hp2 + valor)) {
+                this.Hp2 = this.Hp2 + valor;
+            } else {
+                this.Hp2 = 100;
+            }
+        } else {
+            if (Hp1 > valor) {
+                this.Hp1 = this.Hp1 - valor;
+            } else {
+                this.Hp1 = 0;
+                finCombate();
+            }
+        }
+        this.BarraEnemigo1.setValue(Hp1);
+        System.out.println("El valor es " + Hp1);
+        pelea();
+    }
+    
+    public void inicioTurno(){
+        if(velocidad > velocidad2){
+           iniciador = "Jugador";
+        }else{
+           iniciador = "Enemigo";
+        }
+    }
+    
     public PeleaPokemon() {
         initComponents();
-        BarraEnemigo.setValue(hp1);
-        BarraEnemigo1.setValue(hp2);
+        BarraEnemigo.setValue(Hp1);
+        BarraEnemigo1.setValue(Hp2);
     }
+    public void afectar(String aff, int valor) {
+//        this.BarraYo.setValue(valor);
+//        System.out.println(valor);
+        if (aff.equals("suma")) {
+            if (101 > (Hp1 + valor)) {
+                this.Hp1 = this.Hp1 + valor;
+            } else {
+                this.Hp1 = 100;
+            }
+        } else {
+            if (Hp2 > valor) {
+                this.Hp2 = this.Hp1 - valor;
+            } else {
+                this.Hp2 = 0;
+                finCombate();
+            }
+        }
+        this.BarraEnemigo1.setValue(Hp2);
+        System.out.println("El valor es " + Hp2);
+        pelea();
+    }
+    
+    public void finCombate() {
+        if (Hp1 == 0) {
+            JOptionPane.showMessageDialog(null, "Lo siento has perdido");
+        }
+        if (Hp2 == 0) {
+            JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
+        }
+    }
+    
+    public void nAtack1(){
+        iniciador = "Enemigo";
+        afectar("resta", 50);
+    }
+    
+    public void nAtack2(){
+        iniciador = "Enemigo";
+        afectar("resta", 60);
+        
+    }
+    
+    public void nAtack3(){
+        iniciador = "Enemigo";
+        afectar("resta", 70);
+        
+    }
+    
+    public void nAtack4(){
+        iniciador = "Enemigo";
+        afectar("resta", 30);
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -287,7 +434,9 @@ public class PeleaPokemon extends javax.swing.JFrame {
 
     private void inventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioActionPerformed
         // TODO add your handling code here:
-
+        iniciador = "Enemigo";
+        afectar("suma", 10);
+        
     }//GEN-LAST:event_inventarioActionPerformed
 
     private void pokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemonActionPerformed
