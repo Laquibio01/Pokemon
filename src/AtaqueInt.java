@@ -31,15 +31,19 @@ public class AtaqueInt extends javax.swing.JFrame  {
                 this.Hp2 = 0;
             }
         }
+        /*
         this.BarraEnemigo.setValue(Hp2);
+        */
         System.out.println("El valor es " + Hp2);
     }
 
     public  AtaqueInt() {
         imagenFondo();
         initComponents();
+        /*
         BarraYo.setValue(Hp1);
         BarraEnemigo.setValue(Hp2);
+        */
     }
 
     public void finCombate() {
@@ -79,14 +83,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack3 = new javax.swing.JButton();
         Attack2 = new javax.swing.JButton();
         Attack4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        PokemonName = new javax.swing.JLabel();
-        LVLYO = new javax.swing.JLabel();
-        BarraYo = new javax.swing.JProgressBar();
-        jPanel3 = new javax.swing.JPanel();
-        PokemonEnemyName = new javax.swing.JLabel();
-        BarraEnemigo = new javax.swing.JProgressBar();
-        EnemyLVL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,21 +94,17 @@ public class AtaqueInt extends javax.swing.JFrame  {
 
         AttackLabel.setBackground(new java.awt.Color(153, 153, 153));
         AttackLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        AttackLabel.setForeground(new java.awt.Color(0, 0, 0));
         AttackLabel.setText("Ataque");
 
         PPLabel.setBackground(new java.awt.Color(153, 153, 153));
         PPLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        PPLabel.setForeground(new java.awt.Color(0, 0, 0));
         PPLabel.setText("00/00");
 
         jLabel4.setBackground(new java.awt.Color(153, 153, 153));
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("P / P :");
 
         DamageLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
-        DamageLabel.setForeground(new java.awt.Color(0, 0, 0));
         DamageLabel.setText("50");
 
         ReturnButton.setText("Return");
@@ -222,108 +214,16 @@ public class AtaqueInt extends javax.swing.JFrame  {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        PokemonName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        PokemonName.setForeground(new java.awt.Color(0, 0, 0));
-        PokemonName.setText("Pokemon");
-
-        LVLYO.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        LVLYO.setForeground(new java.awt.Color(0, 0, 0));
-        LVLYO.setText("LVL");
-
-        BarraYo.setBackground(new java.awt.Color(102, 255, 102));
-        BarraYo.setForeground(new java.awt.Color(51, 255, 51));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(PokemonName, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(LVLYO))
-                    .addComponent(BarraYo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PokemonName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LVLYO))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BarraYo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        PokemonEnemyName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        PokemonEnemyName.setForeground(new java.awt.Color(0, 0, 0));
-        PokemonEnemyName.setText("Pokemon");
-
-        BarraEnemigo.setBackground(new java.awt.Color(102, 255, 102));
-        BarraEnemigo.setForeground(new java.awt.Color(102, 255, 102));
-
-        EnemyLVL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EnemyLVL.setForeground(new java.awt.Color(0, 0, 0));
-        EnemyLVL.setText("LVL");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BarraEnemigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(PokemonEnemyName, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addComponent(EnemyLVL)))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PokemonEnemyName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EnemyLVL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(BarraEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(PanelAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addContainerGap(332, Short.MAX_VALUE)
                 .addComponent(PanelAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -373,7 +273,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
 
     private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
         PeleaPokemon p = new PeleaPokemon();
-        p.setVisible(true);
         dispose();
     }//GEN-LAST:event_ReturnButtonActionPerformed
 
@@ -419,20 +318,12 @@ public class AtaqueInt extends javax.swing.JFrame  {
     private javax.swing.JButton Attack3;
     private javax.swing.JButton Attack4;
     private javax.swing.JLabel AttackLabel;
-    private javax.swing.JProgressBar BarraEnemigo;
-    private javax.swing.JProgressBar BarraYo;
     private javax.swing.JLabel DamageLabel;
-    private javax.swing.JLabel EnemyLVL;
-    private javax.swing.JLabel LVLYO;
     private javax.swing.JLabel PPLabel;
     private javax.swing.JPanel PanelAtaque;
-    private javax.swing.JLabel PokemonEnemyName;
-    private javax.swing.JLabel PokemonName;
     private javax.swing.JButton ReturnButton;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
 }
