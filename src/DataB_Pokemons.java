@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,20 +9,23 @@ public class DataB_Pokemons {
     public String type = "", nombre = "";
     public int health, defense, velocity, atack;
     
-    public Connection conexion(){
-        String url = "jdbc:mysql://localhost:3306/juegopokemon";
-        String user = "root";
-        String pass = "";
-        Connection conexion = null;
-        
-        try {
-            conexion = DriverManager.getConnection(url, user, pass);
-            System.out.println("Conexion exitosa a la base de datos de MYSQL");
-        }catch(SQLException ex){
-            System.out.println("Error al conectar a la base de datos "+ex.getMessage());
-        }
-        return conexion;
+public Connection conexion(){       //Clase para conexion de SQLServer
+    String url = "jdbc:sqlserver://localhost:1433;databaseName=JuegoPokemon;encrypt=true;trustServerCertificate=true;";
+    String user = "sa";
+    String pass = "1234"; //Necesario cambiar la contraseña de tu usario personal
+    Connection conexion = null;
+
+    try {
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); // Cargar el driver
+        conexion = DriverManager.getConnection(url, user, pass);
+        System.out.println("Conexion exitosa a la base de datos de SQL Server");
+    } catch (ClassNotFoundException ex) {
+        System.out.println("Error: no se encontró el driver JDBC de SQL Server");
+    } catch(SQLException ex){
+        System.out.println("Error al conectar a la base de datos: "+ex.getMessage());
     }
+    return conexion;
+}
     
     public void consulta(){
         Statement sentencia;
@@ -78,37 +82,33 @@ public class DataB_Pokemons {
         }
     }
     
-    public void consultaUnPokemon(String dataBase, String table, int id){
-        Connection conexion = conexion(dataBase);
-        String sql = "DELETE FROM "+table+"WHERE NAME = ?";
-        String type, nombre;
-        int health, defense, velocity, atack;
+   public void consultaUnPokemon(String dataBase, String table, int id){
+  
+        Connection conexion = conexion();
+        String sql = "SELECT * FROM TPokemones WHERE IdPokemon = "+id;
         Statement sentencia;
         ResultSet resultados;
         try{
-            sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE Id: " + id);
+            System.out.println(sql);
+            sentencia = conexion.createStatement();
+            resultados = sentencia.executeQuery(sql);
+            while(resultados.next()){
+                    id = resultados.getInt(1);
+                    this.nombre = resultados.getString(2);
+                    this.type = resultados.getString(3);
+                    this.health = resultados.getInt(4);
+                    this.defense = resultados.getInt(5);
+                    this.velocity = resultados.getInt(6);
+                    this.atack = resultados.getInt(7);
             
-            id = resultados.getInt("IdPokemon");
-            this.nombre = resultados.getString("Name");
-            this.type = resultados.getString("Type");
-            this.health = resultados.getInt("Health");
-            this.defense = resultados.getInt("Defense");
-            this.velocity = resultados.getInt("Velocity");
-            this.atack = resultados.getInt("Atack");
-            
+                System.out.println("ID= "+id+"\t"+"Nombre= "+nombre+"\t\t"+"Type= "+type+"\t\t"+"Health= "+health+"\t"+"Defense= "+defense+
+                "\t"+"Velocity: "+velocity+"\tt"+"Atack= "+atack);
+            }
             
         }catch(SQLException e){
-            System.out.println("Error al consultar datos "+e.getMessage());
+            System.out.println("Error al consultar datos: "+e.getMessage());
         }
         
-         try{
-            sentencia = conexion().createStatement();
-            resultados = sentencia.executeQuery("select * from prueba WHERE NAME = " +id);
-            
-         }catch(SQLException e){ 
-         System.out.println("Error al mostrar datos: "+e.getMessage());
-         }
         
     }
     
