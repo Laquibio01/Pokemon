@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author elcra
- */
 public class CallClasses {
     public static void main(String[] args) {
       
@@ -15,7 +6,6 @@ public class CallClasses {
         
         
       PeleaPokemon interfazMain = new PeleaPokemon();
-      PokejuegoLocal combate = new PokejuegoLocal();
       DataB_Pokemons datos = new DataB_Pokemons();
      
       
@@ -25,7 +15,9 @@ public class CallClasses {
       defensa1 = datos.defense;
       ataque1 = datos.atack;
       velocidad1 = datos.velocity;
+      /*
       combate.establecerPokemonUno(nombre1, Hp1, ataque1, defensa1, velocidad1);
+      */
       
       datos.consultaUnPokemon("JuegoPokemon", "TPokemones", 2);
       nombre2 = datos.nombre;
@@ -33,10 +25,9 @@ public class CallClasses {
       defensa2 = datos.defense;
       ataque2 = datos.atack;
       velocidad2 = datos.velocity;
+      /*
       combate.establecerPokemonDos(nombre2, Hp2, ataque2, defensa2, velocidad2);
-      
-      Pokemon pokemon1 = new Pokemon(nombre1, Hp1, ataque1, defensa1, velocidad1);
-      Pokemon pokemon2 = new Pokemon(nombre2, Hp2, ataque2, defensa2, velocidad2);
+      */
       
       interfazMain.establecerVida(Hp1, Hp2);
       interfazMain.setVisible(true);

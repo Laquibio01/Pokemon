@@ -13,13 +13,9 @@ import javax.swing.JOptionPane;
 public class PeleaPokemon extends javax.swing.JFrame {
 
     
-    AtaqueInt ataques = new AtaqueInt();
     AtaqueInt segundaInt = new AtaqueInt();
-    PokejuegoLocal Pokejuego = new PokejuegoLocal();
     
-    int Hp1, Hp2, nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
-            contRever1 = 0, contRever2 = 0, contRever3 = 0, contRever4 = 0,
-            Damage = 10, velocidad = Pokejuego.velocidad, velocidad2 = Pokejuego.velocidad2;
+    int Hp1, Hp2, velocidad = 50, velocidad2 = 30;
     
     String iniciador, eleccionEnemigo;
             
@@ -115,6 +111,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
         BarraEnemigo.setValue(Hp1);
         BarraEnemigo1.setValue(Hp2);
     }
+    
     public void afectar(String aff, int valor) {
 //        this.BarraYo.setValue(valor);
 //        System.out.println(valor);
@@ -140,9 +137,11 @@ public class PeleaPokemon extends javax.swing.JFrame {
     public void finCombate() {
         if (Hp1 == 0) {
             JOptionPane.showMessageDialog(null, "Lo siento has perdido");
+            this.dispose();
         }
         if (Hp2 == 0) {
             JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
+            this.dispose();
         }
     }
     
@@ -211,14 +210,12 @@ public class PeleaPokemon extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PokemonEnemyName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        PokemonEnemyName.setForeground(new java.awt.Color(0, 0, 0));
         PokemonEnemyName.setText("Pokemon");
 
         BarraEnemigo.setBackground(new java.awt.Color(102, 255, 102));
         BarraEnemigo.setForeground(new java.awt.Color(102, 255, 102));
 
         EnemyLVL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EnemyLVL.setForeground(new java.awt.Color(0, 0, 0));
         EnemyLVL.setText("LVL");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -251,14 +248,12 @@ public class PeleaPokemon extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PokemonEnemyName1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        PokemonEnemyName1.setForeground(new java.awt.Color(0, 0, 0));
         PokemonEnemyName1.setText("Pokemon");
 
         BarraEnemigo1.setBackground(new java.awt.Color(102, 255, 102));
         BarraEnemigo1.setForeground(new java.awt.Color(102, 255, 102));
 
         EnemyLVL1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EnemyLVL1.setForeground(new java.awt.Color(0, 0, 0));
         EnemyLVL1.setText("LVL");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -290,7 +285,6 @@ public class PeleaPokemon extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Que hara el pokemon?");
 
         Pelear.setFont(new java.awt.Font("Microsoft Tai Le", 0, 12)); // NOI18N

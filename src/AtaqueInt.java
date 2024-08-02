@@ -1,21 +1,9 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-/**
- *
- * @author aaron
- */
 public class AtaqueInt extends javax.swing.JFrame  {
 
-    PokejuegoLocal pokejuego = new PokejuegoLocal();
-    PeleaPokemon intMain = new PeleaPokemon();
     
     int Hp1, Hp2,
             nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
@@ -47,7 +35,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         System.out.println("El valor es " + Hp2);
     }
 
-    public AtaqueInt() {
+    public  AtaqueInt() {
         imagenFondo();
         initComponents();
         BarraYo.setValue(Hp1);
@@ -344,9 +332,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Attack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack1ActionPerformed
-       intMain.afectar("resta", 10);
-       
-
         DamageLabel.setText("" + (Damage = 10));
         AttackLabel.setText("Mover el bote");
         if ((nAttack1 - contRever1) > 0) {
@@ -357,8 +342,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack1ActionPerformed
 
     private void Attack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack2ActionPerformed
-        intMain.afectar("resta", 50);
-
         DamageLabel.setText("" + (Damage=50));
         AttackLabel.setText("Mover el cheto");
         if ((nAttack2 - contRever2) > 0) {
@@ -369,8 +352,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack2ActionPerformed
 
     private void Attack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack3ActionPerformed
-        intMain.afectar("resta", 20);
-
         DamageLabel.setText("" + (Damage = 20));
         AttackLabel.setText("Morder el egg");
         if ((nAttack3 - contRever3) > 0) {
@@ -381,8 +362,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
     }//GEN-LAST:event_Attack3ActionPerformed
 
     private void Attack4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack4ActionPerformed
-        intMain.afectar("resta", 30);
-
         DamageLabel.setText("" + (Damage = 30));
         AttackLabel.setText("Mascar la iguana");
         if ((nAttack4 - contRever4) > 0) {
