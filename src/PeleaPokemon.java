@@ -1,15 +1,18 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 public class PeleaPokemon extends javax.swing.JFrame {
     
     
-    AtaqueInt segundaInt = new AtaqueInt();
     DataB_Pokemons datosPokes = new DataB_Pokemons();
     
         int defensa1, ataque1, velocidad1, defensa2, ataque2, velocidad2;
         String nombre1, nombre2;
         int Hp1, Hp2, maxHp1, maxHp2;
-    
+        
+     
+     
     String iniciador, eleccionEnemigo;
             
     boolean primerTurno = true;
@@ -21,11 +24,6 @@ public class PeleaPokemon extends javax.swing.JFrame {
     }
     */
     
-    private void modificarVida(){
-        this.Hp1 = segundaInt.Hp1;
-        this.Hp2 = segundaInt.Hp2;
-        segundaInt.dispose();
-    }
     
     private void pelea(){ 
         PokemonEnemyName.setText(nombre2);
@@ -134,8 +132,19 @@ public class PeleaPokemon extends javax.swing.JFrame {
     
     public PeleaPokemon() {
         initComponents();
+        
+        Pelear.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AtaqueInt segundaInt = new AtaqueInt(PeleaPokemon.this);
+                segundaInt.setVisible(true);
+            }
+    
+    });
         obtenerDatos();
         pelea();
+        
     }
     
     public void afectar(String aff, int valor) {
@@ -315,11 +324,6 @@ public class PeleaPokemon extends javax.swing.JFrame {
 
         Pelear.setFont(new java.awt.Font("Microsoft Tai Le", 0, 12)); // NOI18N
         Pelear.setText("Pelear");
-        Pelear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PelearActionPerformed(evt);
-            }
-        });
 
         pokemon.setText("Pokemon");
         pokemon.addActionListener(new java.awt.event.ActionListener() {
@@ -462,15 +466,6 @@ public class PeleaPokemon extends javax.swing.JFrame {
     private void pokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemonActionPerformed
         // afectar("suma",10);
     }//GEN-LAST:event_pokemonActionPerformed
-
-    private void PelearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PelearActionPerformed
-        // TODO add your handling code here:
-        AtaqueInt p = new AtaqueInt();
-        p.setVisible(true);
-        PeleaPokemon pp = new PeleaPokemon();
-
-
-    }//GEN-LAST:event_PelearActionPerformed
     
     /**
      * @param args the command line arguments

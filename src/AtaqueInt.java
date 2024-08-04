@@ -10,6 +10,8 @@ public class AtaqueInt extends javax.swing.JFrame  {
             contRever1 = 0, contRever2 = 0, contRever3 = 0, contRever4 = 0,
             Damage = 10;
     
+    private PeleaPokemon peleaPokemon;
+    
     public void establecerVida(int vidaUno, int vidaDos){
         this.Hp1 = vidaUno;
         this.Hp2 = vidaDos;
@@ -37,9 +39,18 @@ public class AtaqueInt extends javax.swing.JFrame  {
         System.out.println("El valor es " + Hp2);
     }
 
-    public  AtaqueInt() {
+    public  AtaqueInt(PeleaPokemon peleaPokemon) {
+        this.peleaPokemon = peleaPokemon;
+        
         imagenFondo();
         initComponents();
+        
+        Attack1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peleaPokemon.afectar("resta", 50);
+            }
+        });
         /*
         BarraYo.setValue(Hp1);
         BarraEnemigo.setValue(Hp2);
@@ -152,11 +163,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
         );
 
         Attack1.setText("Ataque 1");
-        Attack1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Attack1ActionPerformed(evt);
-            }
-        });
 
         Attack3.setText("Ataque 3");
         Attack3.addActionListener(new java.awt.event.ActionListener() {
@@ -231,16 +237,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Attack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack1ActionPerformed
-        DamageLabel.setText("" + (Damage = 10));
-        AttackLabel.setText("Mover el bote");
-        if ((nAttack1 - contRever1) > 0) {
-            contRever1++;
-        }
-        PPLabel.setText((nAttack1 - contRever1) + "/" + nAttack1);
-        finCombate();
-    }//GEN-LAST:event_Attack1ActionPerformed
-
     private void Attack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack2ActionPerformed
         DamageLabel.setText("" + (Damage=50));
         AttackLabel.setText("Mover el cheto");
@@ -305,11 +301,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AtaqueInt().setVisible(true);
-            }
-        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
