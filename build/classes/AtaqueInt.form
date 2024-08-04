@@ -3,6 +3,13 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="0" green="0" red="0" type="rgb"/>
+    </Property>
+    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+      <Color id="Default Cursor"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -217,25 +224,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ataque 3"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Attack3ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Attack2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ataque 2"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Attack2ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Attack4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ataque 4"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Attack4ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -41,14 +41,33 @@ public class AtaqueInt extends javax.swing.JFrame  {
 
     public  AtaqueInt(PeleaPokemon peleaPokemon) {
         this.peleaPokemon = peleaPokemon;
-        
         imagenFondo();
         initComponents();
-        
         Attack1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.afectar("resta", 50);
+            }
+        });
+        
+        Attack2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peleaPokemon.afectar("resta", 30);
+            }
+        });
+        
+        Attack3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peleaPokemon.afectar("resta", 15);
+            }
+        });
+        
+        Attack4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                peleaPokemon.afectar("resta", 10);
             }
         });
         /*
@@ -65,7 +84,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
         }
     }
-
+   
     public void imagenFondo() {
         String imagen = "\\background-pokemon.jpg";
         //String imagenDos = "\\Pokemon-Background_1.jpeg";
@@ -96,6 +115,9 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         PanelAtaque.setBackground(new java.awt.Color(204, 204, 204));
         PanelAtaque.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
@@ -165,25 +187,10 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack1.setText("Ataque 1");
 
         Attack3.setText("Ataque 3");
-        Attack3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Attack3ActionPerformed(evt);
-            }
-        });
 
         Attack2.setText("Ataque 2");
-        Attack2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Attack2ActionPerformed(evt);
-            }
-        });
 
         Attack4.setText("Ataque 4");
-        Attack4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Attack4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout PanelAtaqueLayout = new javax.swing.GroupLayout(PanelAtaque);
         PanelAtaque.setLayout(PanelAtaqueLayout);
@@ -236,36 +243,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Attack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack2ActionPerformed
-        DamageLabel.setText("" + (Damage=50));
-        AttackLabel.setText("Mover el cheto");
-        if ((nAttack2 - contRever2) > 0) {
-            contRever2++;
-        }
-        PPLabel.setText((nAttack2 - contRever2) + "/" + nAttack2);
-        finCombate();
-    }//GEN-LAST:event_Attack2ActionPerformed
-
-    private void Attack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack3ActionPerformed
-        DamageLabel.setText("" + (Damage = 20));
-        AttackLabel.setText("Morder el egg");
-        if ((nAttack3 - contRever3) > 0) {
-            contRever3++;
-        }
-        PPLabel.setText((nAttack3 - contRever3) + "/" + nAttack3);
-        finCombate();
-    }//GEN-LAST:event_Attack3ActionPerformed
-
-    private void Attack4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Attack4ActionPerformed
-        DamageLabel.setText("" + (Damage = 30));
-        AttackLabel.setText("Mascar la iguana");
-        if ((nAttack4 - contRever4) > 0) {
-            contRever4++;
-        }
-        PPLabel.setText((nAttack4 - contRever4) + "/" + nAttack4);
-        finCombate();
-    }//GEN-LAST:event_Attack4ActionPerformed
 
     private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
         PeleaPokemon p = new PeleaPokemon();
