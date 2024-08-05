@@ -7,7 +7,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
     
     int Hp1, Hp2,
             nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
-            contRever1 = 0, contRever2 = 0, contRever3 = 0, contRever4 = 0,
+            contRever1 = 2, contRever2 = 3, contRever3 = 5, contRever4 = 6,
             Damage = 10;
     
     private PeleaPokemon peleaPokemon;
@@ -45,36 +45,56 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(contRever1 > 0){
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 50);
                 dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Te quedaste sin ese golpe");
+                    Attack1.setEnabled(false);
+                }
             }
         });
         
         Attack2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(contRever2 > 0){
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 40);
                 dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Te quedaste sin ese golpe");
+                    Attack2.setEnabled(false);
+                }
             }
         });
         
         Attack3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(contRever3 > 0){
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 25);
                 dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Te quedaste sin ese golpe");
+                    Attack3.setEnabled(false);
+                }
             }
         });
         
         Attack4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(contRever4 > 0){
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 30);
                 dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Te quedaste sin ese golpe");
+                    Attack4.setEnabled(false);
+                }
             }
         });
         /*

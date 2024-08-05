@@ -74,6 +74,9 @@ public class PeleaPokemon extends javax.swing.JFrame {
     private void pelea(){ 
         PokemonEnemyName.setText(nombre2);
         PokemonPlayerName.setText(nombre1);
+        if(Hp1 == 0 || Hp2 == 0){
+            JOptionPane.showMessageDialog(null, "La pelea terminó");
+        }else{
         if(primerTurno){
             Hp1 = maxHp1;
             Hp2 = maxHp2;
@@ -94,6 +97,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             inventario.setEnabled(true);
             pokemon.setEnabled(true);
             huir.setEnabled(true);
+        }
         }
     }
     
@@ -194,9 +198,17 @@ public class PeleaPokemon extends javax.swing.JFrame {
     public void finCombate() {
         if (Hp1 <= 0) {
             JOptionPane.showMessageDialog(null, "Lo siento has perdido");
+            Pelear.setEnabled(false);
+            inventario.setEnabled(false);
+            pokemon.setEnabled(false);
+            huir.setEnabled(false);
         }
         if (Hp2 <= 0) {
             JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
+            Pelear.setEnabled(false);
+            inventario.setEnabled(false);
+            pokemon.setEnabled(false);
+            huir.setEnabled(false);
         }
     }
     
