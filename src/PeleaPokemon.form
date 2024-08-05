@@ -192,7 +192,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BarraEnemigo1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="BarraJugador" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="PokemonPlayerName" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace pref="38" max="32767" attributes="0"/>
@@ -212,7 +212,7 @@
                           <Component id="EnemyLVL1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="17" max="32767" attributes="0"/>
-                      <Component id="BarraEnemigo1" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="BarraJugador" min="-2" pref="22" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -227,7 +227,7 @@
                 <Property name="text" type="java.lang.String" value="Pokemon"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JProgressBar" name="BarraEnemigo1">
+            <Component class="javax.swing.JProgressBar" name="BarraJugador">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="ff" red="66" type="rgb"/>

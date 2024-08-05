@@ -45,7 +45,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             this.defensa2 = datosPokes.defense;
             this.velocidad2 = datosPokes.velocity;
             this.ataque2 = datosPokes.atack;
-            BarraEnemigo1.setValue(Hp2);
+            BarraJugador.setValue(Hp2);
             pelea();
         } else {
             try{
@@ -121,6 +121,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             } else {
                 this.Hp2 = maxHp2;
             }
+            this.BarraEnemigo.setValue(Hp2);
         } else {
             if (maxHp1 > valor) {
                 this.Hp1 = this.Hp1 - valor;
@@ -129,7 +130,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
                 finCombate();
             }
         }
-        this.BarraEnemigo1.setValue(Hp1);
+        this.BarraJugador.setValue(Hp1);
         System.out.println("El valor de vida del jugador es: " + Hp1);
         pelea();
     }
@@ -144,6 +145,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
                 this.Hp1 = maxHp1;
             }
             iniciador = "Enemigo";
+            this.BarraJugador.setValue(Hp1);
         } else {
             if (maxHp2+1 > valor) {
                 this.Hp2 = this.Hp2 - valor;
@@ -152,8 +154,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
                 finCombate();
             }
         }
-        this.BarraEnemigo1.setValue(Hp2);
-        System.out.println("El valor del enemigo es: " + Hp2);
+        this.BarraEnemigo.setValue(Hp2);
+        System.out.println("El valor de vida del enemigo es: " + Hp2);
         pelea();
     }
     
@@ -205,7 +207,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
         EnemyLVL = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         PokemonPlayerName = new javax.swing.JLabel();
-        BarraEnemigo1 = new javax.swing.JProgressBar();
+        BarraJugador = new javax.swing.JProgressBar();
         EnemyLVL1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -267,8 +269,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
         PokemonPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PokemonPlayerName.setText("Pokemon");
 
-        BarraEnemigo1.setBackground(new java.awt.Color(102, 255, 102));
-        BarraEnemigo1.setForeground(new java.awt.Color(102, 255, 102));
+        BarraJugador.setBackground(new java.awt.Color(102, 255, 102));
+        BarraJugador.setForeground(new java.awt.Color(102, 255, 102));
 
         EnemyLVL1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         EnemyLVL1.setText("LVL");
@@ -280,7 +282,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BarraEnemigo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BarraJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(PokemonPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
@@ -295,7 +297,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
                     .addComponent(PokemonPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EnemyLVL1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(BarraEnemigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BarraJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -414,26 +416,6 @@ public class PeleaPokemon extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-   /* public void afectar(String aff, int valor){
-       if(aff.equals("suma") ){
-           if(101>(hp2+valor)){
-           this.hp2 = this.hp2 + valor;
-           }else{
-               this.hp2 = 100;
-           }
-       }else{
-           if(hp2>valor){
-               
-           this.hp2=this.hp2 - valor;
-           
-           }else{
-               this.hp2=0;
-           }
-       }
-       this.jProgressBar3.setValue(hp2);
-        System.out.println("el valor es "+hp2);
-    } */
-    
     private void huirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huirActionPerformed
         // afectar("resta",50);
 
@@ -487,7 +469,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar BarraEnemigo;
-    private javax.swing.JProgressBar BarraEnemigo1;
+    private javax.swing.JProgressBar BarraJugador;
     private javax.swing.JLabel EnemyLVL;
     private javax.swing.JLabel EnemyLVL1;
     private javax.swing.JButton Pelear;
