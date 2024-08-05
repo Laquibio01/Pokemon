@@ -42,6 +42,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
         BarraJugador.setMaximum(Hp1);
         BarraEnemigo.setMinimum(0);
         BarraJugador.setMinimum(0);
+        BarraJugador.setValue(Hp1);
+        BarraEnemigo.setValue(Hp2);
         modificarHp();
         pelea();
         
@@ -301,8 +303,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
         PokemonEnemyName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PokemonEnemyName.setText("Pokemon");
 
-        BarraEnemigo.setBackground(new java.awt.Color(102, 255, 102));
-        BarraEnemigo.setForeground(new java.awt.Color(102, 255, 102));
+        BarraEnemigo.setBackground(new java.awt.Color(255, 255, 255));
+        BarraEnemigo.setForeground(new java.awt.Color(0, 255, 51));
 
         labelEnemyHp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelEnemyHp.setText("HP");
@@ -335,7 +337,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
                     .addComponent(labelEnemyHp)
                     .addComponent(enemyHp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(BarraEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BarraEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -378,8 +380,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
                     .addComponent(PokemonPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPlayerHp)
                     .addComponent(playerHp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(BarraJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BarraJugador, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
