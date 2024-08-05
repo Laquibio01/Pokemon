@@ -7,7 +7,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
     
     int Hp1, Hp2,
             nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
-            contRever1 = 2, contRever2 = 3, contRever3 = 5, contRever4 = 6,
+            contRever1 = 1, contRever2 = 3, contRever3 = 5, contRever4 = 6,
             Damage = 10;
     
     private PeleaPokemon peleaPokemon;
@@ -103,14 +103,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         */
     }
 
-    public void finCombate() {
-        if (Hp1 == 0) {
-            JOptionPane.showMessageDialog(null, "Lo siento has perdido");
-        }
-        if (Hp2 == 0) {
-            JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
-        }
-    }
+   
    
     public void imagenFondo() {
         String imagen = "\\background-pokemon.jpg";
