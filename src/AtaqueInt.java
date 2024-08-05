@@ -55,7 +55,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
-                peleaPokemon.afectar("resta", 30);
+                peleaPokemon.afectar("resta", 40);
                 dispose();
             }
         });
@@ -64,7 +64,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
-                peleaPokemon.afectar("resta", 15);
+                peleaPokemon.afectar("resta", 25);
                 dispose();
             }
         });
@@ -73,7 +73,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
-                peleaPokemon.afectar("resta", 10);
+                peleaPokemon.afectar("resta", 30);
                 dispose();
             }
         });

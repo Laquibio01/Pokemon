@@ -106,9 +106,9 @@ public class PeleaPokemon extends javax.swing.JFrame {
             eleccionEnemigo = "restar";
             eleccion = (int) (Math.random() * 4);
             switch(eleccion){
-                case 0 -> vida = 10;
-                case 1 -> vida = 50;
-                case 2 -> vida = 20;
+                case 0 -> vida = 50;
+                case 1 -> vida = 40;
+                case 2 -> vida = 25;
                 case 3 -> vida = 30;
                 case 4 -> {
                     vida = 10;
