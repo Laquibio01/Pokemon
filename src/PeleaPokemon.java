@@ -7,23 +7,62 @@ public class PeleaPokemon extends javax.swing.JFrame {
     
     DataB_Pokemons datosPokes = new DataB_Pokemons();
     
-        int defensa1, ataque1, velocidad1, defensa2, ataque2, velocidad2;
-        String nombre1, nombre2;
-        int Hp1, Hp2, maxHp1, maxHp2;
-        
-     
-     
-    String iniciador, eleccionEnemigo;
-            
+    int defensa1, ataque1, velocidad1, defensa2, ataque2, velocidad2;
+    String nombre1, nombre2;
+    int Hp1, Hp2, maxHp1, maxHp2;     
+    String iniciador, eleccionEnemigo;      
     boolean primerTurno = true;
-    /*
-    public void establecerVida(int vidaUno, int vidaDos){
-        this.Hp1 = vidaUno;
-        this.Hp2 = vidaDos;
-        segundaInt.establecerVida(vidaUno, vidaDos);
-    }
-    */
     
+    public PeleaPokemon() {
+        initComponents();
+        
+        Pelear.addActionListener(new ActionListener(){
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AtaqueInt segundaInt = new AtaqueInt(PeleaPokemon.this);
+                segundaInt.setVisible(true);
+            }
+    
+    });
+        obtenerDatos();
+        pelea();
+        
+    }
+    
+    private void obtenerDatos(){
+        if(primerTurno){
+            datosPokes.consultaUnPokemon("JuegoPokemon", "TPokemones", 1);
+            this.nombre1 = datosPokes.nombre;
+            this.maxHp1 = datosPokes.health;
+            this.defensa1 = datosPokes.defense;
+            this.velocidad1 = datosPokes.velocity;
+            this.ataque1 = datosPokes.atack;
+            BarraEnemigo.setValue(Hp1);
+            datosPokes.consultaUnPokemon("JuegoPokemon", "TPokemones", 2);
+            this.nombre2 = datosPokes.nombre;
+            this.maxHp2 = datosPokes.health;
+            this.defensa2 = datosPokes.defense;
+            this.velocidad2 = datosPokes.velocity;
+            this.ataque2 = datosPokes.atack;
+            BarraEnemigo1.setValue(Hp2);
+            pelea();
+        } else {
+            try{
+                datosPokes.conexion().close();
+            }catch(SQLException e){
+                System.out.println("Error al cerrar a la base de datos: "+e.getMessage());
+            }
+        }
+    }
+    
+    public void inicioTurno(){
+        if(velocidad1 > velocidad2){
+           iniciador = "Jugador";
+        }else{
+           iniciador = "Enemigo";
+        }
+    }
     
     private void pelea(){ 
         PokemonEnemyName.setText(nombre2);
@@ -91,60 +130,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
             }
         }
         this.BarraEnemigo1.setValue(Hp1);
-        System.out.println("El valor es " + Hp1);
+        System.out.println("El valor de vida del jugador es: " + Hp1);
         pelea();
-    }
-    
-    public void inicioTurno(){
-        if(velocidad1 > velocidad2){
-           iniciador = "Jugador";
-        }else{
-           iniciador = "Enemigo";
-        }
-    }
-    
-    private void obtenerDatos(){
-        if(primerTurno){
-            datosPokes.consultaUnPokemon("JuegoPokemon", "TPokemones", 1);
-            this.nombre1 = datosPokes.nombre;
-            this.maxHp1 = datosPokes.health;
-            this.defensa1 = datosPokes.defense;
-            this.velocidad1 = datosPokes.velocity;
-            this.ataque1 = datosPokes.atack;
-            BarraEnemigo.setValue(Hp1);
-            datosPokes.consultaUnPokemon("JuegoPokemon", "TPokemones", 2);
-            this.nombre2 = datosPokes.nombre;
-            this.maxHp2 = datosPokes.health;
-            this.defensa2 = datosPokes.defense;
-            this.velocidad2 = datosPokes.velocity;
-            this.ataque2 = datosPokes.atack;
-            BarraEnemigo1.setValue(Hp2);
-            pelea();
-        } else {
-            try{
-                datosPokes.conexion().close();
-            }catch(SQLException e){
-                System.out.println("Error al cerrar a la base de datos: "+e.getMessage());
-            }
-        }
-    }
-    
-    
-    public PeleaPokemon() {
-        initComponents();
-        
-        Pelear.addActionListener(new ActionListener(){
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AtaqueInt segundaInt = new AtaqueInt(PeleaPokemon.this);
-                segundaInt.setVisible(true);
-            }
-    
-    });
-        obtenerDatos();
-        pelea();
-        
     }
     
     public void afectar(String aff, int valor) {
@@ -156,6 +143,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             } else {
                 this.Hp1 = maxHp1;
             }
+            iniciador = "Enemigo";
         } else {
             if (maxHp2+1 > valor) {
                 this.Hp2 = this.Hp2 - valor;
@@ -165,21 +153,11 @@ public class PeleaPokemon extends javax.swing.JFrame {
             }
         }
         this.BarraEnemigo1.setValue(Hp2);
-        System.out.println("El valor es " + Hp2);
+        System.out.println("El valor del enemigo es: " + Hp2);
         pelea();
     }
     
-    public void finCombate() {
-        if (Hp1 == 0) {
-            JOptionPane.showMessageDialog(null, "Lo siento has perdido");
-            this.dispose();
-        }
-        if (Hp2 == 0) {
-            JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
-            this.dispose();
-        }
-    }
-    
+    /*
     public void nAtack1(){
         iniciador = "Enemigo";
         afectar("resta", 50);
@@ -202,13 +180,17 @@ public class PeleaPokemon extends javax.swing.JFrame {
         afectar("resta", 30);
         
     }
+    */
     
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    public void finCombate() {
+        if (Hp1 <= 0) {
+            JOptionPane.showMessageDialog(null, "Lo siento has perdido");
+        }
+        if (Hp2 <= 0) {
+            JOptionPane.showMessageDialog(null, "El jugador ha Ganado!");
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

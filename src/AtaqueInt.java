@@ -17,27 +17,26 @@ public class AtaqueInt extends javax.swing.JFrame  {
         this.Hp2 = vidaDos;
     }
 
+    /*
     public void afectar(String aff, int valor) {
 //        this.BarraYo.setValue(valor);
 //        System.out.println(valor);
         if (aff.equals("suma")) {
-            if (101 > (Hp1 + valor)) {
+            if (peleaPokemon.maxHp1 > (Hp1 + valor)) {
                 this.Hp1 = this.Hp1 + valor;
             } else {
-                this.Hp1 = 100;
+                this.Hp1 = peleaPokemon.maxHp1 ;
             }
         } else {
-            if (Hp2 > valor) {
+            if (peleaPokemon.maxHp2 > valor) {
                 this.Hp2 = this.Hp1 - valor;
             } else {
                 this.Hp2 = 0;
             }
         }
-        /*
-        this.BarraEnemigo.setValue(Hp2);
-        */
-        System.out.println("El valor es " + Hp2);
+        System.out.println("El valor del enemigo es: " + Hp2);
     }
+    */
 
     public  AtaqueInt(PeleaPokemon peleaPokemon) {
         this.peleaPokemon = peleaPokemon;
@@ -46,6 +45,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 50);
             }
         });
@@ -53,6 +53,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 30);
             }
         });
@@ -60,6 +61,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 15);
             }
         });
@@ -67,6 +69,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 10);
             }
         });
