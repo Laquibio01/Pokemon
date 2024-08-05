@@ -5,12 +5,11 @@ import java.awt.event.ActionListener;
 public class AtaqueInt extends javax.swing.JFrame  {
 
     
-    int Hp1, Hp2,
-            nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,
-            contRever1 = 1, contRever2 = 3, contRever3 = 5, contRever4 = 6,
-            Damage = 10;
+    int Hp1, Hp2,nAttack1 = 10, nAttack2 = 10, nAttack3 = 10, nAttack4 = 10,Damage = 10, contRever1 = 1, contRever2 = 3, contRever3 = 4, contRever4 = 5;
     
     private PeleaPokemon peleaPokemon;
+    
+    
     
     public void establecerVida(int vidaUno, int vidaDos){
         this.Hp1 = vidaUno;
@@ -41,11 +40,13 @@ public class AtaqueInt extends javax.swing.JFrame  {
     public  AtaqueInt(PeleaPokemon peleaPokemon) {
         this.peleaPokemon = peleaPokemon;
         imagenFondo();
+        this.setUndecorated(true);
         initComponents();
         Attack1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(contRever1 > 0){
+                    contRever1--;
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 50);
                 dispose();
@@ -59,7 +60,9 @@ public class AtaqueInt extends javax.swing.JFrame  {
         Attack2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 if(contRever2 > 0){
+                    contRever2--;
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 40);
                 dispose();
@@ -74,6 +77,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(contRever3 > 0){
+                    contRever3--;
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 25);
                 dispose();
@@ -88,6 +92,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(contRever4 > 0){
+                    contRever4--;
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 30);
                 dispose();
@@ -97,6 +102,8 @@ public class AtaqueInt extends javax.swing.JFrame  {
                 }
             }
         });
+        
+        AtaqueInt.this.setLocation(515, 465);
         /*
         BarraYo.setValue(Hp1);
         BarraEnemigo.setValue(Hp2);
@@ -128,7 +135,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
         PPLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         DamageLabel = new javax.swing.JLabel();
-        ReturnButton = new javax.swing.JButton();
         Attack1 = new javax.swing.JButton();
         Attack3 = new javax.swing.JButton();
         Attack2 = new javax.swing.JButton();
@@ -137,6 +143,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(0, -1000));
         setResizable(false);
 
         PanelAtaque.setBackground(new java.awt.Color(204, 204, 204));
@@ -160,48 +167,35 @@ public class AtaqueInt extends javax.swing.JFrame  {
         DamageLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
         DamageLabel.setText("50");
 
-        ReturnButton.setText("Return");
-        ReturnButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReturnButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ReturnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(AttackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DamageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(AttackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DamageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                .addGap(31, 31, 31)
-                                .addComponent(PPLabel)))
-                        .addGap(6, 6, 6))))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
+                        .addComponent(PPLabel)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AttackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(DamageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AttackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DamageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(PPLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ReturnButton, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Attack1.setText("Ataque 1");
@@ -232,19 +226,19 @@ public class AtaqueInt extends javax.swing.JFrame  {
         PanelAtaqueLayout.setVerticalGroup(
             PanelAtaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAtaqueLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PanelAtaqueLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(PanelAtaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Attack1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(Attack2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Attack1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Attack2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelAtaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Attack3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Attack4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelAtaqueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,18 +250,13 @@ public class AtaqueInt extends javax.swing.JFrame  {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(332, Short.MAX_VALUE)
-                .addComponent(PanelAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(PanelAtaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnButtonActionPerformed
-        PeleaPokemon p = new PeleaPokemon();
-        dispose();
-    }//GEN-LAST:event_ReturnButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,7 +299,6 @@ public class AtaqueInt extends javax.swing.JFrame  {
     private javax.swing.JLabel DamageLabel;
     private javax.swing.JLabel PPLabel;
     private javax.swing.JPanel PanelAtaque;
-    private javax.swing.JButton ReturnButton;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

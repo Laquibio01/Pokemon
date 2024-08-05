@@ -2,6 +2,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 public class PeleaPokemon extends javax.swing.JFrame {
     
     
@@ -12,14 +15,22 @@ public class PeleaPokemon extends javax.swing.JFrame {
     int Hp1, Hp2, maxHp1, maxHp2;     
     String iniciador, eleccionEnemigo;      
     boolean primerTurno = true;
+    int contadorAtaque1 = 1, contadorAtaque2 = 2, contadorAtaque3 = 4, contadorAtaque4 = 5, contadorVida = 5;
     
     public PeleaPokemon() {
+        AtaqueInt segundaInt = new AtaqueInt(PeleaPokemon.this);
+        this.setResizable(false);
         initComponents();
+        setImagePokes(playerImage, "E:\\TIDBIS3M\\2do Cuatri\\POO\\Java Programs\\Pokemon\\src\\Pikachu.png");
+        setImagePokes(enemyImage, "E:\\TIDBIS3M\\2do Cuatri\\POO\\Java Programs\\Pokemon\\src\\Charmander.png");
+        segundaInt.imagenFondo();
+        
         
         Pelear.addActionListener(new ActionListener(){
             
             @Override
             public void actionPerformed(ActionEvent e) {
+                Pelear.setEnabled(false);
                 AtaqueInt segundaInt = new AtaqueInt(PeleaPokemon.this);
                 segundaInt.setVisible(true);
             }
@@ -34,6 +45,16 @@ public class PeleaPokemon extends javax.swing.JFrame {
         modificarHp();
         pelea();
         
+    }
+    
+    private void setImagePokes (JLabel LabelName, String  ImagenFondo){
+        /*
+        String  Imagen = "E:\\TIDBIS3M\\2do Cuatri\\POO\\Java Programs\\Pokemon\\src\\Pikachu.png"; 
+        */
+        ImageIcon image = new ImageIcon(ImagenFondo);
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance(LabelName.getWidth(), LabelName.getHeight(), LabelName.getWidth()));
+        LabelName.setIcon(icon);
+        this.repaint();
     }
     
     private void obtenerDatos(){
@@ -138,7 +159,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             }
             this.BarraEnemigo.setValue(Hp2);
         } else {
-            if (Hp1 > valor) {
+        if (Hp1 > valor) {
                 this.Hp1 = this.Hp1 - valor;
                 finCombate();
             } else {
@@ -155,6 +176,21 @@ public class PeleaPokemon extends javax.swing.JFrame {
     public void afectar(String aff, int valor) {
 //        this.BarraYo.setValue(valor);
 //        System.out.println(valor);
+        if(aff.equals("resta") && valor == 50){
+            contadorAtaque1--;
+        }
+        if(aff.equals("resta") && valor == 40){
+            contadorAtaque2--;
+        }
+        if(aff .equals("resta") && valor == 25){
+            contadorAtaque3--;
+        }
+        if(aff.equals("resta") && valor == 30){
+            contadorAtaque4--;
+        }
+        if(aff.equals("suma") && valor == 40){
+            contadorVida--;
+        }
         if (aff.equals("suma")) {
             if (maxHp1+1 > (Hp1 + valor)) {
                 this.Hp1 = this.Hp1 + valor;
@@ -246,6 +282,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
         pokemon = new javax.swing.JButton();
         Curacion = new javax.swing.JButton();
         huir = new javax.swing.JButton();
+        enemyImage = new javax.swing.JLabel();
+        playerImage = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         jLabel1.setText("\"Nombre pokemon\"");
@@ -254,6 +292,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(488, 132));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -306,8 +345,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
         PokemonPlayerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PokemonPlayerName.setText("Pokemon");
 
-        BarraJugador.setBackground(new java.awt.Color(102, 255, 102));
-        BarraJugador.setForeground(new java.awt.Color(102, 255, 102));
+        BarraJugador.setBackground(new java.awt.Color(255, 255, 255));
+        BarraJugador.setForeground(new java.awt.Color(0, 255, 51));
 
         labelPlayerHp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelPlayerHp.setText("HP");
@@ -419,23 +458,34 @@ public class PeleaPokemon extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(enemyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(playerImage, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(448, 448, 448))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(enemyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playerImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -520,6 +570,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
     private javax.swing.JLabel PokemonEnemyName;
     private javax.swing.JLabel PokemonPlayerName;
     private javax.swing.JLabel enemyHp;
+    private javax.swing.JLabel enemyImage;
     private javax.swing.JButton huir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -532,6 +583,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
     private javax.swing.JLabel labelEnemyHp;
     private javax.swing.JLabel labelPlayerHp;
     private javax.swing.JLabel playerHp;
+    private javax.swing.JLabel playerImage;
     private javax.swing.JButton pokemon;
     // End of variables declaration//GEN-END:variables
 }
