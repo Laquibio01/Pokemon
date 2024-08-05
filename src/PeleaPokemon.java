@@ -25,7 +25,14 @@ public class PeleaPokemon extends javax.swing.JFrame {
             }
     
     });
+        
         obtenerDatos();
+        
+        BarraEnemigo.setMaximum(Hp2);
+        BarraJugador.setMaximum(Hp1);
+        BarraEnemigo.setMinimum(0);
+        BarraJugador.setMinimum(0);
+        
         pelea();
         
     }

@@ -47,6 +47,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 50);
+                dispose();
             }
         });
         
@@ -55,6 +56,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 30);
+                dispose();
             }
         });
         
@@ -63,6 +65,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 15);
+                dispose();
             }
         });
         
@@ -71,6 +74,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             public void actionPerformed(ActionEvent e) {
                 peleaPokemon.iniciador = "Enemigo";
                 peleaPokemon.afectar("resta", 10);
+                dispose();
             }
         });
         /*
