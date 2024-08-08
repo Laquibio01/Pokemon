@@ -53,8 +53,8 @@ public Connection conexion(){       //Clase para conexion de SQLServer
         }
         return conexion;
     }
-*/
-   public static void main(String[] args) {
+    
+    public static void main(String[] args) {
         DataB_Pokemons dbPokemons = new DataB_Pokemons();
         Connection conexion = dbPokemons.conexion();
         if (conexion != null) {
@@ -105,6 +105,36 @@ public Connection conexion(){       //Clase para conexion de SQLServer
 
         // Cargar la biblioteca nativa
         System.load(tempFile.getAbsolutePath());
+    }
+*/
+   public static void main(String[] args) {
+        DataB_Pokemons dbPokemons = new DataB_Pokemons();
+        Connection conexion = dbPokemons.conexion();
+        if (conexion != null) {
+            System.out.println("Conexión establecida con éxito.");
+        } else {
+            System.out.println("Fallo en la conexión.");
+        }
+    }
+
+    public Connection conexion() {
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=JuegoPokemon;encrypt=true;trustServerCertificate=true;integratedSecurity=true;";
+        Connection conexion = null;
+
+        try {
+            // Cargar el driver JDBC
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            // Conectar a la base de datos
+            conexion = DriverManager.getConnection(url);
+            System.out.println("Conexión exitosa a la base de datos de SQL Server");
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Error: no se encontró el driver JDBC de SQL Server");
+        } catch (SQLException ex) {
+            System.out.println("Error al conectar a la base de datos: " + ex.getMessage());
+        }
+
+        return conexion;
     }
     
    public void consultaUnPokemon(String dataBase, String table, int id){
