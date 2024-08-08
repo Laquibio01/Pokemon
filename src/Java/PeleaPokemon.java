@@ -21,8 +21,8 @@ public class PeleaPokemon extends javax.swing.JFrame {
     public PeleaPokemon() {
         this.setResizable(false);
         initComponents();
-        setImagePokes(playerImage, "/Imagenes/Pikachu.png");
-        setImagePokes(enemyImage, "/Imagenes/Charmander.png");
+        setImagePokes(playerImage, "/Images/Pikachu.png");
+        setImagePokes(enemyImage, "/Images/Charmander.png");
         
         Pelear.addActionListener(new ActionListener(){
             
