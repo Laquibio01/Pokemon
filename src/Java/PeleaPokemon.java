@@ -1,3 +1,5 @@
+package Java;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -458,7 +460,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fondoPelea, javax.swing.GroupLayout.PREFERRED_SIZE, 483, Short.MAX_VALUE)
+                .addComponent(fondoPelea, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
