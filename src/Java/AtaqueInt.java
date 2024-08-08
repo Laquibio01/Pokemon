@@ -1,3 +1,5 @@
+package Java;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -79,7 +81,7 @@ public class AtaqueInt extends javax.swing.JFrame  {
             }
         });
         
-        AtaqueInt.this.setLocation(515, 465);
+        AtaqueInt.this.setLocation(708, 570);
     }
 
     @SuppressWarnings("unchecked")

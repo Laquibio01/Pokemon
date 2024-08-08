@@ -1,3 +1,5 @@
+package Java;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -259,6 +261,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondoPelea.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        fondoPelea.setMaximumSize(new java.awt.Dimension(480, 452));
         fondoPelea.setPreferredSize(new java.awt.Dimension(488, 132));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -458,7 +461,7 @@ public class PeleaPokemon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fondoPelea, javax.swing.GroupLayout.PREFERRED_SIZE, 483, Short.MAX_VALUE)
+                .addComponent(fondoPelea, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

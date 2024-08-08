@@ -1,3 +1,5 @@
+package Java;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -12,7 +14,7 @@ public class DataB_Pokemons {
 public Connection conexion(){       //Clase para conexion de SQLServer
     String url = "jdbc:sqlserver://localhost:1433;databaseName=JuegoPokemon;encrypt=true;trustServerCertificate=true;";
     String user = "sa";
-    String pass = "1234"; //Necesario cambiar la contraseña de tu usario personal
+    String pass = "101211"; //Necesario cambiar la contraseña de tu usario personal
     Connection conexion = null;
 
     try {
