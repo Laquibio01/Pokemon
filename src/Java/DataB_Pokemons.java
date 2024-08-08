@@ -69,6 +69,9 @@ public Connection conexion(){       //Clase para conexion de SQLServer
         Connection conexion = null;
 
         try {
+            // Cargar la biblioteca nativa sqljdbc_auth.dll
+            loadNativeLibrary();
+
             // Cargar el driver JDBC
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -79,9 +82,29 @@ public Connection conexion(){       //Clase para conexion de SQLServer
             System.out.println("Error: no se encontró el driver JDBC de SQL Server");
         } catch (SQLException ex) {
             System.out.println("Error al conectar a la base de datos: " + ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Error al cargar la biblioteca nativa: " + ex.getMessage());
         }
 
         return conexion;
+    }
+
+    private void loadNativeLibrary() throws IOException {
+        // Obtener el archivo sqljdbc_auth.dll desde el classpath
+        InputStream in = getClass().getResourceAsStream("/Librerias/mssql-jdbc_auth-12.8.0.x64.dll");
+        if (in == null) {
+            throw new IOException("No se encontró sqljdbc_auth.dll en el classpath");
+        }
+
+        // Crear un archivo temporal para almacenar sqljdbc_auth.dll
+        File tempFile = File.createTempFile("sqljdbc_auth", ".dll");
+        tempFile.deleteOnExit();
+
+        // Copiar el contenido de sqljdbc_auth.dll al archivo temporal
+        Files.copy(in, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        // Cargar la biblioteca nativa
+        System.load(tempFile.getAbsolutePath());
     }
     
    public void consultaUnPokemon(String dataBase, String table, int id){
